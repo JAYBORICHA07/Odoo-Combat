@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const session = JSON.parse(decodeURIComponent(sessionDetails));
         setSession({
           ...session,
-          user: session.user[0],
+          user: session.user,
         });
         if (window.location.pathname === "/auth/login") {
           window.location.href = "/";
@@ -37,6 +37,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       } else {
         setLoading(true);
         const result = await trpcFetch.user.query();
+        console.log("result", result);
         setLoading(false);
         if (result) {
           const encodedSession = encodeURIComponent(JSON.stringify(result));
@@ -45,7 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             // @ts-ignore
             ...result,
             // @ts-ignore
-            user: result.user[0],
+            user: result.user,
           });
           if (window.location.pathname === "/auth/login") {
             window.location.href = "/";

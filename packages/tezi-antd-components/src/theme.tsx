@@ -39,7 +39,6 @@ const theme: ThemeConfig = {
     },
     Menu: {
       itemSelectedColor: COLOR[100],
-      itemSelectedColor: COLOR[700],
     },
     Segmented: {
       colorBgLayout: COLOR[100],

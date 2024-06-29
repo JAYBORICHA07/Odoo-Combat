@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 
 const Home: React.FC = () => {
   const { session, signIn } = useAuth();
+  console.log(session);
   return (
     <div style={{ width: "100%", justifyContent: "center" }}>
       {session === null && (

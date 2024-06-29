@@ -8,7 +8,6 @@ export class ItemsTable extends BaseTable {
   readonly table = "items";
   columns = this.setColumns((t) => ({
     id: t.autoId(),
-    userId: t.integer().foreignKey("user", "id"),
     categoryId: t.integer(),
     name: t.string().trim(),
     description: t.text().trim(),
@@ -19,11 +18,6 @@ export class ItemsTable extends BaseTable {
   }));
 
   relations = {
-    user: this.belongsTo(() => UserTable, {
-      required: true,
-      columns: ["userId"],
-      references: ["id"],
-    }),
     category: this.belongsTo(() => CategoriesTable, {
       required: true,
       columns: ["categoryId"],

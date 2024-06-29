@@ -8,6 +8,7 @@ export function trpcContext({ req, res }: CreateFastifyContextOptions) {
   const user = session?.length
     ? (app.jwt.decode(session) as SessionType | null)
     : null;
+  console.log("user from context", user);
   return { req, res, session, user };
 }
 

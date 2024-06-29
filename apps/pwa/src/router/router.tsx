@@ -5,6 +5,8 @@ import SuspenseAndErrorBoundary from "../utils/SuspenseAndErrorBoundary";
 import LoadingScreen from "../components/LoadingScreen";
 import SvgIconStyle from "../components/SvgIconStyle";
 import { Button, Result } from "antd";
+import BuyPage from "../pages/buy/buy.page";
+import ProductPage from "../pages/product/product.page";
 
 const getIcon = (name: string): ReactNode => (
   <SvgIconStyle src={`/icons/${name}.svg`} style={{ width: 1, height: 1 }} />
@@ -98,6 +100,32 @@ const PATH_DASHBOARD = {
             title: "Success",
             path: "/auth/success",
             element: <AuthSuccess />,
+          },
+        },
+      },
+      buy: {
+        title: "Buy",
+        path: "/buy",
+        icon: getIcon("material-symbols-shopping-cart-outline-rounded"),
+        element: <DashboardLayout />,
+        children: {
+          root: {
+            title: "Buy",
+            path: "/buy",
+            element: <BuyPage />,
+          },
+        },
+      },
+      product: {
+        title: "Product",
+        path: "/product",
+        icon: getIcon("material-symbols-shopping-cart-outline-rounded"),
+        element: <DashboardLayout />,
+        children: {
+          root: {
+            title: "Product",
+            path: "/product",
+            element: <ProductPage />,
           },
         },
       },

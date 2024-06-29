@@ -1,8 +1,6 @@
 import { Queryable, Selectable, Updatable } from "orchid-orm";
 import { BaseTable } from "./baseTable";
-import { ItemsTable } from "./items.table";
 import { OrderTable } from "./order.table";
-import { CategoriesTable } from "./categories.table";
 import { CartTable } from "./cart.table";
 
 export class UserTable extends BaseTable {
@@ -13,29 +11,24 @@ export class UserTable extends BaseTable {
     email: t.string().trim().unique(),
     isVerified: t.boolean(),
     profilePicture: t.string(),
-    mobileNumber: t.string().default("0000000000"),
+    mobileNumber: t.string().nullable(),
+    address: t.string().trim().nullable(),
   }));
 
   relations = {
-    items: this.hasMany(() => ItemsTable, {
-      required: false,
-      columns: ["id"],
-      references: ["userId"],
-    }),
     orders: this.hasMany(() => OrderTable, {
       required: false,
       columns: ["id"],
       references: ["userId"],
-    }),
-    categories: this.hasMany(() => CategoriesTable, {
-      required: false,
-      columns: ["id"],
-      references: ["userId"],
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     }),
     carts: this.hasMany(() => CartTable, {
       required: false,
       columns: ["id"],
       references: ["userId"],
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     }),
   };
 }
