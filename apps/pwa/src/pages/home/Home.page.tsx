@@ -1,35 +1,9 @@
 import React from "react";
 import { Button, Typography, Row, Flex, Image, Card, Col } from "antd";
-import { useAuth } from "../../hooks/useAuth";
-import { trpc } from "../../trpc/trpc";
 
 const Home: React.FC = () => {
-  const user = trpc.user.useQuery();
-  console.log(user);
-
-  const { session, signIn } = useAuth();
-  console.log(session);
   return (
     <div style={{ justifyContent: "center" }}>
-      {session === null && (
-        <Row
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "1rem",
-          }}
-          gutter={[16, 16]}
-        >
-          <Typography.Text style={{ textAlign: "center" }}>
-            Please login to continue
-          </Typography.Text>
-          <Button type="primary" onClick={signIn}>
-            Google Auth
-          </Button>
-        </Row>
-      )}
       <Flex style={{ justifyContent: "space-between" }}>
         <Flex vertical gap={5} justify="center">
           <div
@@ -56,6 +30,12 @@ const Home: React.FC = () => {
               padding: "20px",
               margin: "20px,0",
               fontWeight: "bolder",
+            }}
+            onClick={() => {
+              window.open(
+                import.meta.env.VITE_BE_URL + "/auth/google",
+                "_self"
+              );
             }}
           >
             Rent Now
@@ -231,7 +211,10 @@ const Home: React.FC = () => {
                 <Image src="https://cdn.prod.website-files.com/65f28b94b7a422d719e8ff02/6666d9abe9b4195e6b821540_feature-01.svg"></Image>
               </Flex>
               <Typography.Title level={5}>01</Typography.Title>
-              <Typography.Title style={{margin:'0', padding:'10px 0'}} level={3}>
+              <Typography.Title
+                style={{ margin: "0", padding: "10px 0" }}
+                level={3}
+              >
                 Sustainable Materials
               </Typography.Title>
               <Typography.Paragraph>
@@ -241,30 +224,36 @@ const Home: React.FC = () => {
             </div>
           </Col>
           <Col span={8}>
-          <div style={{width:'100%'}}>
+            <div style={{ width: "100%" }}>
               <Flex justify="flex-start">
                 <Image src="https://cdn.prod.website-files.com/65f28b94b7a422d719e8ff02/6666dc1e81d21ec86b2f3592_feature-02.svg"></Image>
               </Flex>
-              <Typography.Title  level={5}>02</Typography.Title>
-              <Typography.Title style={{margin:'0', padding:'10px 0'}} level={3}>
+              <Typography.Title level={5}>02</Typography.Title>
+              <Typography.Title
+                style={{ margin: "0", padding: "10px 0" }}
+                level={3}
+              >
                 Warrenty Included
               </Typography.Title>
               <Typography.Paragraph>
-              Elit pharetra tempus nisi faucibus in mattis nibh urna maecenas.
+                Elit pharetra tempus nisi faucibus in mattis nibh urna maecenas.
               </Typography.Paragraph>
             </div>
           </Col>
           <Col span={8}>
-          <div style={{ width: "100%" }}>
+            <div style={{ width: "100%" }}>
               <Flex justify="flex-start">
                 <Image src="https://cdn.prod.website-files.com/65f28b94b7a422d719e8ff02/6666dc286aa2f24de9d3dbc0_feature-03.svg"></Image>
               </Flex>
               <Typography.Title level={5}>03</Typography.Title>
-              <Typography.Title style={{margin:'0', padding:'10px 0'}} level={3}>
+              <Typography.Title
+                style={{ margin: "0", padding: "10px 0" }}
+                level={3}
+              >
                 Delivery and Free Shipping
               </Typography.Title>
               <Typography.Paragraph>
-              Elit pharetra tempus nisi faucibus in mattis nibh urna maecenas.
+                Elit pharetra tempus nisi faucibus in mattis nibh urna maecenas.
               </Typography.Paragraph>
             </div>
           </Col>

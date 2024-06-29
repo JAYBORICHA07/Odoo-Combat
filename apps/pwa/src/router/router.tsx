@@ -33,7 +33,6 @@ const DashboardLayout = Loadable(
 );
 const HomePage = Loadable(lazy(() => import("../pages/home/Home.page")));
 const AuthSuccess = Loadable(lazy(() => import("../pages/auth/Success.page")));
-const LoginPage = Loadable(lazy(() => import("../pages/auth/Login.page")));
 const RegisterUser = Loadable(
   lazy(() => import("../pages/auth/Register.page"))
 );
@@ -78,7 +77,7 @@ const PATH_DASHBOARD = {
           root: {
             title: "Home",
             path: "/home",
-            element: <HomePage />,
+            element: <BuyPage />,
           },
         },
       },
@@ -88,7 +87,7 @@ const PATH_DASHBOARD = {
           login: {
             title: "User Login",
             path: "/auth/login",
-            element: <LoginPage />,
+            element: <HomePage />,
           },
           register: {
             title: "Register User",
