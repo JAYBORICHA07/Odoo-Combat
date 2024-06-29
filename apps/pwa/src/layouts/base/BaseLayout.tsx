@@ -33,6 +33,7 @@ import SideNav from "./SideNav.tsx";
 import HeaderNav from "./HeaderNav.tsx";
 import { ReactNode } from "react";
 import { useAuth } from "../../hooks/useAuth.ts";
+import FooterNav from "./FooterNav.tsx";
 
 const { Content } = Layout;
 
@@ -218,13 +219,13 @@ export const BaseLayout = ({ children }: AppLayoutProps) => {
               <FloatButton.BackTop />
             </div>
           </Content>
-          {/* <FooterNav
+          <FooterNav
             style={{
               textAlign: "center",
               marginLeft: collapsed ? 0 : "200px",
               background: "none",
             }}
-          /> */}
+          />
         </Layout>
       </Layout>
     </>
