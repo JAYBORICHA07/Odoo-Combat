@@ -29,7 +29,6 @@ const Home: React.FC = () => {
           </Button>
         </Row>
       )}
-
       <Flex style={{ justifyContent: "space-between" }}>
         <Flex vertical gap={5} justify="center">
           <div
@@ -270,8 +269,6 @@ const Home: React.FC = () => {
           </Col>
         </Row>
       </div>
-
-     
     </div>
   );
 };
