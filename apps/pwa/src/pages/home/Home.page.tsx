@@ -27,7 +27,7 @@ const Home: React.FC = () => {
       )}
       {session?.user && (
         <Typography.Text style={{ textAlign: "center" }}>
-          Welcome, {session.user.name}!
+          Welcome, {session.user.name}!, how are you?
         </Typography.Text>
       )}
     </div>
