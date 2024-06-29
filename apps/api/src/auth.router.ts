@@ -70,18 +70,24 @@ export const authRouter = (
         }
 
         let user = await getUserByEmail(userInfo.email);
-        console.log(user)
         if (!user) {
           user = await addNewUser({
             name: userInfo.name,
             email: userInfo.email,
             isVerified: userInfo.email_verified,
             profilePicture: userInfo.picture,
+            address: "",
+            mobileNumber: "",
           });
           console.log(user);
         }
+        const newUser = user.constructor === Array ? user[0] : user;
+        console.log("newUser", newUser);
 
-        const jwtToken = fastify.jwt.sign({ user }, { expiresIn: "7d" });
+        const jwtToken = fastify.jwt.sign(
+          { user: newUser },
+          { expiresIn: "7d" }
+        );
 
         reply.setCookie("session", jwtToken, {
           httpOnly: true,

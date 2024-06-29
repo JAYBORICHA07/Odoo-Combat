@@ -26,7 +26,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 // import FooterNav from "./FooterNav.tsx";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 import { useEffect } from "react";
 import { NProgress } from "../../components/Nprogress/Progress.tsx";
 import SideNav from "./SideNav.tsx";
@@ -47,8 +47,9 @@ export const BaseLayout = ({ children }: AppLayoutProps) => {
   } = theme.useToken();
   const { session, signOut } = useAuth();
   console.log(session);
-  const isMobile = useMediaQuery({ maxWidth: 769 });
-  const [collapsed, setCollapsed] = useState(false);
+  // const isMobile = useMediaQuery({ maxWidth: 769 });
+  // const [collapsed, setCollapsed] = useState(false);
+  const collapsed = true;
   const [navFill, setNavFill] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
@@ -89,9 +90,9 @@ export const BaseLayout = ({ children }: AppLayoutProps) => {
     },
   ];
 
-  useEffect(() => {
-    setCollapsed(isMobile);
-  }, [isMobile]);
+  // useEffect(() => {
+  //   setCollapsed(isMobile);
+  // }, [isMobile]);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -116,7 +117,7 @@ export const BaseLayout = ({ children }: AppLayoutProps) => {
           trigger={null}
           collapsible
           collapsed={collapsed}
-          onCollapse={(value) => setCollapsed(value)}
+          // onCollapse={(value) => setCollapsed(value)}
           style={{
             overflow: "auto",
             position: "fixed",
@@ -126,6 +127,7 @@ export const BaseLayout = ({ children }: AppLayoutProps) => {
             background: "none",
             boxShadow: navFill ? "0 0 8px 2px rgba(0, 0, 0, 0.05)" : "none",
             border: "none",
+            display: "none",
             transition: "all .2s",
           }}
         />
@@ -157,8 +159,9 @@ export const BaseLayout = ({ children }: AppLayoutProps) => {
                   icon={
                     collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
                   }
-                  onClick={() => setCollapsed(!collapsed)}
+                  // onClick={() => setCollapsed(!collapsed)}
                   style={{
+                    display: "none",
                     fontSize: "16px",
                     width: 64,
                     height: 64,
@@ -188,7 +191,7 @@ export const BaseLayout = ({ children }: AppLayoutProps) => {
               margin: `0 0 0 ${collapsed ? 0 : "200px"}`,
               borderRadius: collapsed ? 0 : borderRadius,
               transition: "all .25s",
-              padding: "24px 32px",
+              // padding: "24px 32px",
               minHeight: 360,
             }}
           >

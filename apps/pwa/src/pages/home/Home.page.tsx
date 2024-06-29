@@ -8,6 +8,7 @@ const Home: React.FC = () => {
   console.log(user);
 
   const { session, signIn } = useAuth();
+  console.log(session);
   return (
     <div style={{ justifyContent: "center" }}>
       {session === null && (

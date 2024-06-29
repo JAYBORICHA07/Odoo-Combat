@@ -8,8 +8,8 @@ export class CartTable extends BaseTable {
   readonly table = "cart";
   columns = this.setColumns((t) => ({
     id: t.autoId(),
-    userId: t.integer().foreignKey("user", "id"),
-    itemId: t.integer().foreignKey("items", "id"),
+    userId: t.integer(),
+    itemId: t.integer(),
     quantity: t.integer(),
     grandTotal: t.numeric(),
   }));

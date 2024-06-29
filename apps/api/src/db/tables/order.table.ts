@@ -7,7 +7,7 @@ export class OrderTable extends BaseTable {
   readonly table = "order";
   columns = this.setColumns((t) => ({
     id: t.autoId(),
-    userId: t.integer().foreignKey("user", "id"),
+    userId: t.integer(),
     cartId: t.integer().unique(),
     status: t.string().trim(),
     dueDays: t.integer(),
@@ -15,12 +15,12 @@ export class OrderTable extends BaseTable {
 
   relations = {
     user: this.belongsTo(() => UserTable, {
-      required: true,
+      required: false,
       columns: ["userId"],
       references: ["id"],
     }),
-    cart: this.hasOne(() => CartTable, {
-      required: true,
+    cart: this.belongsTo(() => CartTable, {
+      required: false,
       columns: ["cartId"],
       references: ["id"],
     }),
