@@ -2,6 +2,7 @@ import { inferRouterOutputs } from "@trpc/server";
 // import * as packageJson from "../package.json";
 import { publicProcedure, router, protectedProcedure } from "./context.trpc";
 import { db } from "./db/db.config";
+import { Where } from "orchid-orm";
 
 export const trpcRouter = router({
   user: protectedProcedure.query(async ({ ctx }) => {
@@ -20,6 +21,7 @@ export const trpcRouter = router({
     const product = await db.items.selectAll();
     return product;
   }),
+  getProductByCategory: publicProcedure.query(async ({ input }) => {}),
 });
 
 // export type definition of API

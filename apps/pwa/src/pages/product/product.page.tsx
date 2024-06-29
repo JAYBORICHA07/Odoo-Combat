@@ -8,6 +8,9 @@ import {
   Layout,
   Typography,
 } from "antd";
+import { trpcFetch } from "../../trpc/trpcFetch";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 
 interface ItemObj {
   id: number | string; // Assuming autoId() could be number or string
@@ -33,7 +36,18 @@ const Items: ItemObj = {
     "https://assets-global.website-files.com/642291d5b1dc03e88e1d5dc0/6427c3b1bb87cb6f661f2c73_product-main-17-p-800.jpg",
 };
 
+const getProduct = async () =>
+  await trpcFetch.getProductByCategory.query({ category });
+
 const ProductPage = () => {
+  const [searchParams] = useSearchParams();
+
+  const category = searchParams.get("category");
+
+  useEffect(() => {
+    getProduct();
+  });
+
   const [form] = Form.useForm();
   return (
     <Layout

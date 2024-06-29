@@ -7,6 +7,7 @@ import SvgIconStyle from "../components/SvgIconStyle";
 import { Button, Result } from "antd";
 import BuyPage from "../pages/buy/buy.page";
 import ProductPage from "../pages/product/product.page";
+import CategoryPage from "../pages/category/category.page";
 
 const getIcon = (name: string): ReactNode => (
   <SvgIconStyle src={`/icons/${name}.svg`} style={{ width: 1, height: 1 }} />
@@ -78,6 +79,19 @@ const PATH_DASHBOARD = {
             title: "Home",
             path: "/home",
             element: <BuyPage />,
+          },
+        },
+      },
+      category: {
+        title: "category",
+        path: "/category",
+        icon: getIcon("material-symbols-home-outline-rounded"),
+        element: <DashboardLayout />,
+        children: {
+          root: {
+            title: "Category",
+            path: "/category",
+            element: <CategoryPage />,
           },
         },
       },

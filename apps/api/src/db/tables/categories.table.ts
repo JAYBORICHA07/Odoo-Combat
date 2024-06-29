@@ -7,7 +7,7 @@ export class CategoriesTable extends BaseTable {
   readonly table = "categories";
   columns = this.setColumns((t) => ({
     id: t.autoId(),
-    name: t.string().trim(),
+    name: t.string().trim().unique(),
   }));
 
   relations = {

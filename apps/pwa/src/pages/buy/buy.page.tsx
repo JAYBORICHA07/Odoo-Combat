@@ -1,5 +1,6 @@
 import { Button, Card, Flex, Layout, Typography } from "antd";
 import { trpcFetch } from "../../trpc/trpcFetch";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 interface ItemObj {
   name: string;
@@ -7,6 +8,7 @@ interface ItemObj {
 }
 
 interface FraturedItemObj {
+  id: number;
   name: string;
   price: string;
   imageUrl: string;
@@ -49,6 +51,7 @@ const BuyPage = () => {
   ];
 
   const FraturedItemCard = ({
+    id,
     name,
     price,
     imageUrl: url,
@@ -63,6 +66,10 @@ const BuyPage = () => {
           display: "flex",
           flexDirection: "column",
           maxWidth: "501px",
+        }}
+        onClick={() => {
+          setSearchParams({ category: id.toString() });
+          navigate(`/product?category=${name}`);
         }}
       >
         <img
@@ -80,6 +87,10 @@ const BuyPage = () => {
       </Card>
     );
   };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const navigate = useNavigate();
 
   const ItemCard = ({ name, url }: ItemObj) => {
     return (
@@ -93,6 +104,10 @@ const BuyPage = () => {
           alignItems: "center",
           display: "flex",
           flexDirection: "column",
+        }}
+        onClick={() => {
+          setSearchParams({ category: name });
+          navigate(`/category?category=${name}`);
         }}
       >
         <img src={url} alt={name} style={{ width: "150px", height: "150px" }} />
@@ -144,6 +159,7 @@ const BuyPage = () => {
         >
           {line1.map((item) => (
             <FraturedItemCard
+              id={item.id}
               key={item.name}
               name={item.name}
               price={item.price}
@@ -160,6 +176,7 @@ const BuyPage = () => {
         >
           {line2.map((item) => (
             <FraturedItemCard
+              id={item.id}
               key={item.name}
               name={item.name}
               price={item.price}
