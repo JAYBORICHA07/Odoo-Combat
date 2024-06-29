@@ -1,6 +1,10 @@
 import { orchidORM } from "orchid-orm";
 import { env } from "../configs/env.config";
 import { UserTable } from "./tables/user.table";
+import { ItemsTable } from "./tables/items.table";
+import { OrderTable } from "./tables/order.table";
+import { CartTable } from "./tables/cart.table";
+import { CategoriesTable } from "./tables/categories.table";
 
 export const db = orchidORM(
   {
@@ -11,5 +15,9 @@ export const db = orchidORM(
   },
   {
     user: UserTable,
-  },
+    items: ItemsTable,
+    order: OrderTable,
+    cart: CartTable,
+    categories: CategoriesTable,
+  }
 );
