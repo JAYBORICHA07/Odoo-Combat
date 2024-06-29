@@ -70,7 +70,6 @@ export const authRouter = (
         }
 
         let user = await getUserByEmail(userInfo.email);
-        console.log(userInfo);
         if (!user) {
           user = await addNewUser({
             name: userInfo.name,
